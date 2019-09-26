@@ -1,9 +1,10 @@
 import React from 'react';
-//import HomeFeed from './src/Screens/HomeFeed';
-import BoxScreen from './src/Screens/BoxScreen';
+import AppNavigator from './src/navigation'
+
+console.disableYellowBox = true;
 
 const App = () => {
-  return <BoxScreen />;
+  return <AppNavigator />;
 };
 
 export default App;
