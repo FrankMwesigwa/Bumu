@@ -1,55 +1,96 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import {Image} from 'react-native';
 import {
   createStackNavigator,
-  createAppContainer,
   createBottomTabNavigator,
+  createAppContainer,
 } from 'react-navigation';
 
-import {Platform} from 'react-native';
+import FeedScreen from '../screens/Feeds';
+//import Home_Activity from './screens/Home';
+import Settings_Activity from '../screens/Home/Settings';
+import Details_Activity from '../screens/Home/Details';
+import Profile_Activity from '../screens/Home/Profile';
 
-import {Icon} from 'native-base';
-
-import HomeTab from '../screens/HomeTab';
-import SearchTab from '../screens/SearchTab';
-import AddMediaTab from '../screens/AddMediaTab';
-import LikesTab from '../screens/LikesTab';
-import ProfileTab from '../screens/ProfileTab';
-
-const MainNavigator = createBottomTabNavigator(
+const HomeTab = createStackNavigator(
   {
-    HomeTab: {
-      screen: HomeTab,
-    },
-    SearchTab: {
-      screen: SearchTab,
-    },
-    AddMediaTab: {
-      screen: AddMediaTab,
-    },
-    LikesTab: {
-      screen: LikesTab,
-    },
-    ProfileTab: {
-      screen: ProfileTab,
-    },
+    Feed: FeedScreen,
+    Details: Details_Activity,
   },
   {
-    animationEnabled: true,
-    swipeEnabled: true,
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      style: {
-        ...Platform.select({
-          android: {
-            backgroundColor: 'white',
-          },
-        }),
-      },
-      activeTintColor: '#000',
-      inactiveTintColor: '#d1cece',
-      showLabel: false,
-      showIcon: true,
+    defaultNavigationOptions: {
+      header: null,
     },
   },
 );
 
-export default createAppContainer(MainNavigator);
+const SettingsTab = createStackNavigator(
+  {
+    Settings: Settings_Activity,
+    Details: Details_Activity,
+    Profile: Profile_Activity,
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#0091EA',
+      },
+      headerTintColor: '#FFFFFF',
+      title: 'Settings Tab',
+    },
+  },
+);
+
+// const BottomNavigator = createBottomTabNavigator(
+//   {
+//     Feed: {screen: FeedScreen},
+//   },
+//   {
+//     initialRouteName: 'Feed',
+//     activeColor: '#1B1F29',
+//     inactiveColor: '#1B1F29',
+//     barStyle: {backgroundColor: '#1B1F29'},
+//   },
+// );
+
+const MainApp = createBottomTabNavigator(
+  {
+    Feed: HomeTab,
+    Settings: SettingsTab,
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused, horizontal, tintColor}) => {
+        const {routeName} = navigation.state;
+        if (routeName === 'Feed') {
+          return (
+            <Image
+              source={require('../../assets/images/home.png')}
+              style={{width: 20, height: 20}}
+            />
+          );
+        } else {
+          return (
+            <Image
+              source={require('../../assets/images/chatlist.png')}
+              style={{width: 20, height: 20}}
+            />
+          );
+        }
+      },
+    }),
+    tabBarOptions: {
+      showLabel: false,
+      activeTintColor: '#FF6F00',
+      inactiveTintColor: '#263238',
+      style: {
+        backgroundColor: '#1B1F29',
+    }
+    },
+  },
+);
+
+export default createAppContainer(MainApp);
