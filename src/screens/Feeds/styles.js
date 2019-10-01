@@ -1,101 +1,203 @@
-import {StyleSheet, Platform} from 'react-native';
-
-import * as themes from '../../constants/theming';
+import {StyleSheet} from 'react-native';
+import {Metrics} from '../../constants/metrics';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  HeaderBg: {
+    //backgroundColor: '#CC0001',
+    borderBottomWidth: 1,
+    //flex: 4,
+    backgroundColor: '#FF2D55',
   },
 
-  header: {
-    paddingVertical: themes.sizes.padding * 2,
+  left: {
+    flex: 1,
+    marginLeft: 5,
   },
-  bell: {
-    height: 10,
-    position: 'absolute',
-    top: 8,
-    left: 10,
-    zIndex: 20,
-    width: 10,
-    backgroundColor: themes.colors.primary,
-    borderRadius: 25,
+
+  body: {
+    flex: 3,
   },
-  inputBox: {
-    backgroundColor: '#D9D9D9',
-    borderBottomWidth: 0,
-    borderTopLeftRadius: 50,
-    borderBottomLeftRadius: 50,
+
+  right: {
+    flex: 1,
+    marginRight: 5,
+    flexDirection: 'row',
   },
-  avatarContainer: {
-    transform: Platform.select({
-      ios: [{rotate: '-50deg'}],
-      android: [{rotate: '0deg'}],
+
+  headerTitle: {
+    color: '#FFFFFF',
+    fontFamily: 'robotoRegular',
+    fontSize: 500,
+    textAlign: 'left',
+    alignSelf: 'flex-start',
+  },
+  /* -- Featured -- */
+  section: {
+    flex: 1,
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
+  sectionGrey: {
+    flex: 1,
+    paddingVertical: 30,
+    backgroundColor: '#f0f0f0',
+  },
+  flatList: {
+    paddingLeft: 10,
+  },
+  headerBg: {
+    flexDirection: 'row',
+    marginBottom: 15,
+    paddingHorizontal: 20,
+  },
+  headerIcon: {
+    fontSize: 24,
+    color: '#333',
+  },
+  sHeader: {
+    color: '#333',
+    marginLeft: 3,
+    fontSize: 14,
+    fontFamily: 'Montserrat-SemiBold',
+    marginTop: 5,
+  },
+  sBtn: {
+    padding: 1,
+    backgroundColor: '#e7e7e7',
+    color: '#FFF',
+  },
+  sLink: {
+    color: '#666',
+    fontSize: 10,
+    fontFamily: 'Montserrat',
+  },
+
+  itemList: {
+    flexDirection: 'row',
+    width: '100%',
+    marginBottom: 10,
+  },
+  itemBig: {
+    width: 300,
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    elevation: 10,
+    shadowOffset: {
+      width: 15,
+      height: 15,
+    },
+    shadowColor: '#999',
+    shadowOpacity: 0.1,
+    shadowRadius: 0,
+    margin: 10,
+    marginBottom: 20,
+  },
+  itemImgBig: {
+    marginBottom: 10,
+    width: '100%',
+    height: 150,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    ...Platform.select({
+      ios: {
+        borderRadius: 5,
+      },
     }),
   },
-  avatar: {
-    height: themes.sizes.screenHeight * 0.09,
-    width: themes.sizes.screenHeight * 0.09,
+  itemNoCrv: {
+    ...Platform.select({
+      ios: {
+        width: '100%',
+        height: 5,
+        backgroundColor: '#FFF',
+        bottom: 10,
+        position: 'absolute',
+      },
+    }),
+  },
+  itemBg: {
+    ...Platform.select({
+      ios: {},
+    }),
   },
 
-  storiesContainer: {
-    marginTop: themes.sizes.margin * 2,
-    paddingHorizontal: themes.sizes.padding,
-  },
-
-  addStoryContainer: {
-    height: themes.sizes.screenWidth * 0.04,
-    width: themes.sizes.screenWidth * 0.04,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    top: 0,
-    left: 4,
-    zIndex: 10,
-    borderRadius: 20,
-  },
-  contentContainer: {
-    paddingTop: themes.sizes.padding,
-  },
-
-  logo: {
-    flex: 1,
-  },
-
-  captionContainer: {
-    padding: themes.sizes.padding * 2,
-    borderBottomWidth: 0.5,
-    borderColor: 'gray',
-  },
-
-  comment: {
-    padding: themes.sizes.padding * 2,
-    flex: 1,
-  },
-  username: {
-    fontSize: 18,
-  },
-  suggestedBox: {
-    borderRadius: 10,
-    backgroundColor: 'white',
-    shadowColor: '#000',
+  item: {
+    width: 200,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    elevation: 10,
     shadowOffset: {
-      width: 0,
-      height: 9,
+      width: 15,
+      height: 15,
     },
-    shadowOpacity: 0.48,
-    shadowRadius: 11.95,
-
-    elevation: 18,
-
-    elevation: 5,
-    height: themes.sizes.screenHeight * 0.15,
-    width: themes.sizes.screenWidth * 0.25,
+    shadowColor: 'grey',
+    shadowOpacity: 0.1,
+    shadowRadius: 0,
   },
-  suggestedContainer: {
-    paddingHorizontal: themes.sizes.padding * 2,
+  itemImg: {
+    marginBottom: 10,
+    width: 200,
+    height: 100,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    ...Platform.select({
+      ios: {
+        borderRadius: 5,
+      },
+    }),
+  },
+  itemFavorite: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    color: '#FCC300',
+    marginTop: 10,
+    paddingRight: 10,
+  },
+  itemPrice: {
+    color: '#333',
+    fontSize: 16,
+    fontFamily: 'Montserrat-SemiBold',
+    paddingHorizontal: 20,
+  },
+  itemPriceSm: {
+    color: '#333',
+    fontSize: 14,
+    fontFamily: 'Montserrat-SemiBold',
+    paddingHorizontal: 20,
+  },
+  itemLocation: {
+    color: '#999',
+    fontSize: 11,
+    fontFamily: 'Montserrat-Regular',
+    marginBottom: 10,
+    paddingHorizontal: 20,
+  },
+  crv: {
+    borderRadius: 8,
+  },
+  itemRow: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingBottom: 15,
+  },
+  itemOverview: {
+    flexGrow: 1,
+    flexDirection: 'row',
+  },
+  itemIcon: {
+    color: '#999',
+    marginRight: 5,
+    fontSize: 24,
+  },
+  itemNo: {
+    color: '#333',
+    marginRight: 5,
+    fontFamily: 'Montserrat-SemiBold',
+    marginTop: 5,
+    fontSize: 14,
   },
 });
 

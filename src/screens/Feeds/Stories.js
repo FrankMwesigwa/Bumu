@@ -15,11 +15,10 @@ const Stories = () => {
             alignItems: 'center',
             paddingHorizontal: 7,
           }}>
-          <Text style={{fontWeight: 'bold'}}>meet your celebrity</Text>
+          <Text style={{fontWeight: 'bold'}} />
 
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Icon name="md-play" style={{fontSize: 14}} />
-            <Text style={{fontWeight: 'bold'}}> Watch All</Text>
+            <Text style={{fontWeight: 'bold'}} />
           </View>
         </View>
         <View style={{flex: 3}}>
