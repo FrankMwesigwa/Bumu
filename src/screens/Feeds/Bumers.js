@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
-import {Button, Icon, Text, Right, View} from 'native-base';
+import {Button, Text, Right, View} from 'native-base';
 
 import Featured from '../../constants/data/Bumers';
 
@@ -14,12 +14,9 @@ const Bumers = () => {
   return (
     <View style={Styles.section}>
       <View style={Styles.headerBg}>
-        <Icon name="clock" type="Feather" style={Styles.headerIcon} />
-        <Text style={Styles.sHeader}>Bumers You Might Know</Text>
+        <Text style={Styles.sHeader}>Bumers you might know</Text>
         <Right>
-          <Button small rounded style={Styles.sBtn}>
-            <Text style={Styles.sLink}>See All</Text>
-          </Button>
+          <Text style={Styles.sLink}>View All</Text>
         </Right>
       </View>
       <FlatList
@@ -32,12 +29,11 @@ const Bumers = () => {
             <View>
               <View>
                 <Image source={item.image} style={Styles.itemImg} />
-                <View style={Styles.itemNoCrv} />
               </View>
-              <Text style={Styles.itemLocation}>{item.name}</Text>
+              <Text style={Styles.itemName}>{item.name}</Text>
               <View style={Styles.itemRow}>
                 <View style={Styles.itemOverview}>
-                  <Button style={Styles.bumuBtn}>
+                  <Button small rounded style={Styles.bumuBtn}>
                     <Text style={Styles.bumuLink}>Bumu + </Text>
                   </Button>
                 </View>
@@ -53,8 +49,8 @@ const Bumers = () => {
 const Styles = StyleSheet.create({
   section: {
     flex: 1,
-    paddingTop: 30,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 20,
     backgroundColor: '#232733',
   },
   headerBg: {
@@ -62,48 +58,41 @@ const Styles = StyleSheet.create({
     marginBottom: 15,
     paddingHorizontal: 20,
   },
-  headerIcon: {
-    fontSize: 24,
-    color: '#333',
-  },
   sHeader: {
     color: '#FF2D55',
     marginLeft: 3,
-    fontSize: 16,
+    fontSize: 15,
     fontFamily: 'Montserrat-SemiBold',
     marginTop: 5,
   },
-  sBtn: {
-    padding: 1,
-    backgroundColor: '#e7e7e7',
-    color: '#FFF',
-  },
   bumuBtn: {
-    padding: 1,
+    flex: 1,
     backgroundColor: '#FF2D55',
-    color: '#FFF',
-    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sLink: {
-    color: '#666',
-    fontSize: 10,
+    color: '#FFF',
+    fontSize: 15,
+    marginTop: 5,
     fontFamily: 'Montserrat',
   },
   bumuLink: {
     color: '#FFF',
-    fontSize: 13,
-    fontFamily: 'Montserrat',
+    fontSize: 10,
+    fontFamily: 'Montserrat-SemiBold',
+    textTransform: 'capitalize',
   },
   flatList: {
     paddingLeft: 10,
   },
   item: {
-    width: 200,
+    width: 150,
     marginBottom: 20,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 5,
+    marginRight: 5,
     backgroundColor: '#1B1F29',
-    borderRadius: 10,
+    borderRadius: 5,
     elevation: 10,
     shadowOffset: {
       width: 15,
@@ -115,69 +104,32 @@ const Styles = StyleSheet.create({
   },
   itemImg: {
     marginBottom: 10,
-    width: 250,
-    height: 150,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    width: 150,
+    height: 100,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     ...Platform.select({
       ios: {
         borderRadius: 10,
       },
     }),
   },
-  itemNoCrv: {
-    ...Platform.select({
-      ios: {
-        width: '100%',
-        height: 5,
-        backgroundColor: '#FFF',
-        bottom: 10,
-        position: 'absolute',
-      },
-    }),
-  },
-  itemFavorite: {
-    position: 'absolute',
-    alignSelf: 'flex-end',
-    color: '#FF2D55',
-    marginTop: 10,
-    paddingRight: 10,
-  },
-  itemPrice: {
-    color: '#333',
-    fontSize: 16,
-    fontFamily: 'Montserrat-SemiBold',
-    paddingHorizontal: 20,
-  },
-  itemPriceSm: {
-    color: '#333',
-    fontSize: 14,
-    fontFamily: 'Montserrat-SemiBold',
-    paddingHorizontal: 20,
-  },
-  itemLocation: {
-    color: '#999',
-    fontSize: 11,
-    fontFamily: 'Montserrat-Regular',
+  itemName: {
+    color: '#FFF',
+    fontSize: 10,
+    fontFamily: 'Montserrat-Bold',
     marginBottom: 10,
     paddingHorizontal: 20,
+    textAlign: 'center',
   },
   itemRow: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingBottom: 15,
   },
-  itemIcon: {
-    color: '#999',
-    marginRight: 5,
-    fontSize: 24,
-  },
-  itemNo: {
-    color: '#333',
-    marginRight: 5,
-    fontFamily: 'Montserrat-SemiBold',
-    marginTop: 5,
-    fontSize: 14,
+  itemOverview: {
+    flexGrow: 1,
+    flexDirection: 'row',
   },
 });
 

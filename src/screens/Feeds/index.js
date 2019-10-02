@@ -4,18 +4,15 @@ import {
   Text,
   StyleSheet,
   View,
-  Dimensions,
   ScrollView,
   StatusBar,
-  Platform,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {Header, Right, Container} from 'native-base';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 
-import Stories from './Stories';
 import Celebrites from './Celebrities';
 import FeedItem from './FeedItem';
 import Bumers from './Bumers';
@@ -32,9 +29,7 @@ class FeedsScreen extends Component {
             barStyle="light-content"
           />
           <View style={styles.actionBarMiddle}>
-            <Text style={styles.actionBarText}>
-              Talk to your Celebrity Bumu
-            </Text>
+            <Text style={styles.actionBarText}>Bumu</Text>
           </View>
           <View style={styles.actionBarRight} />
           <Right style={styles.right}>
@@ -48,18 +43,22 @@ class FeedsScreen extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity>
-              <MaterialIcons name="more-vert" color="#FFFFFF" size={25} />
+              <Image
+                source={require('../../../assets/images/Notification.png')}
+                style={styles.socialImg}
+              />
             </TouchableOpacity>
           </Right>
         </Header>
 
         <View style={styles.subheader} />
-        <View style={[styles.content]}>
-          <Story />
-          <Celebrites />
+        <View style={styles.content}>
           <ScrollView>
+            <Story />
+            <Celebrites />
             <FeedItem />
             <Bumers />
+            <FeedItem />
             <FeedItem />
           </ScrollView>
         </View>

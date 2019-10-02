@@ -3,7 +3,6 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   TouchableHighlight,
   Image,
   StyleSheet,
@@ -11,35 +10,13 @@ import {
 } from 'react-native';
 import {Content} from 'native-base';
 
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FeedElement from './FeedElement';
 
 const {width, height} = Dimensions.get('window');
 
 const FeedItem = () => {
   return (
     <Content>
-      {/* <View style={styles.rowHeaderView}>
-        <Image
-          style={styles.profileImg}
-          source={require('../../../assets/images/ic_background_ptwentyseven.png')}
-        />
-        <View style={styles.rowHeaderNameView}>
-          <Text style={styles.rowNameTxt}>Frank Mwesigwa</Text>
-          <Text style={styles.rowTimeTxt}>4 Hours Ago</Text>
-        </View>
-        <Right>
-          <TouchableOpacity
-            style={[
-              styles.statusView,
-              {backgroundColor: styles.statusBgColor},
-            ]}>
-            <MaterialIcons name="more-vert" color="#FFFFFF" size={25} />
-          </TouchableOpacity>
-        </Right>
-      </View> */}
-
       <View style={styles.section}>
         <TouchableHighlight underlayColor="transparent">
           <View style={styles.record}>
@@ -49,9 +26,7 @@ const FeedItem = () => {
             />
             <View style={styles.itemInfo}>
               <Text style={styles.itemTitle}>Frank Mwesigwa</Text>
-              <Text style={styles.itemDesc}>
-                would love to connect with you
-              </Text>
+              <Text style={styles.itemDesc}>4 hours ago</Text>
             </View>
             <Text style={styles.itemDate}>
               <MaterialIcons name="more-vert" color="#FFFFFF" size={25} />
@@ -60,56 +35,61 @@ const FeedItem = () => {
         </TouchableHighlight>
       </View>
 
-      <View style={styles.section}>
+      <View style={styles.feedsection}>
         <TouchableHighlight underlayColor="transparent">
           <View style={styles.record}>
-            <Image
-              source={require('../../../assets/images/ic_background_ptwentyseven.png')}
-              style={styles.itemImg}
-            />
+            <View style={styles.socialContainer}>
+              <Image
+                source={require('../../../assets/images/e-commerce-like-heart.png')}
+                style={styles.socialImg}
+              />
+              <Text style={styles.socialTitle}>1.2k</Text>
+              <Image
+                source={require('../../../assets/images/path.png')}
+                style={styles.socialImg}
+              />
+              <Text style={styles.socialTitle}>1.2k</Text>
+              <Image
+                source={require('../../../assets/images/send.png')}
+                style={styles.socialImg}
+              />
+              <Text style={styles.socialTitle} />
+              <Image
+                source={require('../../../assets/images/save-button.png')}
+                style={styles.socialImg}
+              />
+            </View>
+
             <View style={styles.itemInfo}>
               <Image
-                source={require('../../../assets/images/CultureReligion.jpg')}
+                source={require('../../../assets/images/45.png')}
                 style={styles.feedImg}
               />
-              <View style={styles.itemDesc}>
-                <View style={styles.postDateView}>
-                  <View style={styles.suggestedPeopleImgView}>
-                    <Image
-                      style={styles.sugestedPeopleImgOne}
-                      source={require('../../../assets/images/ProfileUserImg.png')}
-                    />
-                    <Image
-                      style={styles.sugestedPeopleImgTwo}
-                      source={require('../../../assets/images/ProfileImg.png')}
-                    />
-                    <Image
-                      style={styles.sugestedPeopleImgThree}
-                      source={require('../../../assets/images/reviews_two.png')}
-                    />
-                  </View>
-                  <Text style={[styles.postAuthorDate, {color: '#adadad'}]}>
-                    Liked By
-                  </Text>
-                  <Text
-                    style={[
-                      styles.postAuthorDate,
-                      {color: '#FFF', marginLeft: width * 0.01},
-                    ]}>
-                    Ann, Joy, Emma and 33 others
-                  </Text>
-                  <Text
-                    style={[
-                      styles.postAuthorDate,
-                      {
-                        color: '#6f6f6f',
-                        marginLeft: width * 0.025,
-                        marginTop: -width * 0.007,
-                      },
-                    ]}>
-                    .
-                  </Text>
+              <View style={styles.postDateView}>
+                <View style={styles.suggestedPeopleImgView}>
+                  <Image
+                    style={styles.sugestedPeopleImgOne}
+                    source={require('../../../assets/images/ProfileUserImg.png')}
+                  />
+                  <Image
+                    style={styles.sugestedPeopleImgTwo}
+                    source={require('../../../assets/images/ProfileImg.png')}
+                  />
+                  <Image
+                    style={styles.sugestedPeopleImgThree}
+                    source={require('../../../assets/images/reviews_two.png')}
+                  />
                 </View>
+                <Text style={[styles.postAuthorDate, {color: '#adadad'}]}>
+                  Liked By
+                </Text>
+                <Text
+                  style={[
+                    styles.postAuthorDate,
+                    {color: '#FFF', marginLeft: width * 0.01},
+                  ]}>
+                  Ann, Joy, Emma and 33 others
+                </Text>
               </View>
               <Text style={styles.itemDesc}>
                 Micheal Jordaon considered one of the greatest basketball
@@ -120,112 +100,38 @@ const FeedItem = () => {
           </View>
         </TouchableHighlight>
       </View>
-
-      <View style={[styles.dividerHorizontal, {marginTop: height * 0.022}]} />
     </Content>
   );
 };
 
 const styles = StyleSheet.create({
-  rowHeaderView: {
-    flexDirection: 'row',
-    marginTop: height * 0.022,
-    width: width * 0.85,
-    alignSelf: 'center',
+  section: {
+    paddingLeft: 0,
+    width: '100%',
+    marginTop: 15,
   },
-  rowHeaderNameView: {
-    flexDirection: 'column',
+  feedsection: {
+    paddingLeft: 0,
+    width: '100%',
+  },
+  record: {
+    flexDirection: 'row',
+    marginLeft: 0,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     justifyContent: 'center',
-    marginLeft: width * 0.03,
+    alignItems: 'flex-start',
   },
-  profileImg: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    alignSelf: 'flex-start',
-  },
-  rowNameTxt: {
-    color: '#6f6f6f',
-    fontSize: 17,
-    fontFamily: 'Roboto-Bold',
-  },
-  rowTimeTxt: {
-    color: '#b7b7b7',
-    fontSize: 14,
-    fontFamily: 'Roboto-Bold',
-    textAlign: 'left',
-  },
-  statusView: {
-    borderRadius: height * 0.03,
-    marginTop: -height * 0.03,
-    marginRight: -height * 0.01,
-  },
-  likeCommentShareText: {
-    fontFamily: 'Roboto-Bold',
-    fontSize: 17,
-    marginLeft: width * 0.03,
-    color: '#6f6f6f',
-  },
-  descriptionView: {
-    width: width * 0.85,
-    alignSelf: 'center',
-  },
-  rowDescTxt: {
-    color: '#6f6f6f',
-    fontSize: 15,
-    fontFamily: 'Roboto-Medium',
-    marginTop: height * 0.015,
-    textAlign: 'left',
-  },
-  postDescImage: {
-    width: width * 0.85,
-    height: height * 0.7,
-    alignSelf: 'center',
-    marginTop: height * 0.015,
-    resizeMode: 'stretch',
-  },
-  likeView: {
-    flexDirection: 'row',
-    width: width * 0.23,
-    alignItems: 'center',
-  },
-
-  commentView: {
-    flexDirection: 'row',
-    width: width * 0.34,
-    alignItems: 'center',
-    marginLeft: width * 0.045,
-  },
-
-  shareView: {
-    flexDirection: 'row',
-    width: width * 0.28,
-    alignItems: 'center',
-    marginLeft: width * 0.045,
-  },
-
-  likeCommentShareImage: {
-    width: width * 0.06,
-    height: height * 0.03,
-    resizeMode: 'contain',
-  },
-  shares: {
-    marginTop: height * 0.015,
-  },
-  shareText: {
-    color: '#6f6f6f',
-    fontSize: 15,
-    fontFamily: 'Roboto-Medium',
-    marginTop: height * 0.015,
-    textAlign: 'left',
+  socialContainer: {
+    paddingVertical: 20,
   },
   postDateView: {
-    width: width * 0.95,
+    width: width * 0.78,
     alignSelf: 'center',
     flexDirection: 'row',
     marginTop: height * 0.015,
     alignItems: 'center',
-    marginLeft: 10,
+    marginBottom: 5,
   },
   postAuthorDate: {
     fontSize: 12,
@@ -239,14 +145,14 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: width * 0.06,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'red',
   },
   sugestedPeopleImgTwo: {
     width: 30,
     height: 30,
     borderRadius: width * 0.06,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'red',
     marginLeft: -width * 0.03,
   },
@@ -254,43 +160,29 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: width * 0.06,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'red',
     marginLeft: -width * 0.03,
-  },
-  section: {
-    paddingLeft: 0,
-    width: '100%',
-    marginTop: 10,
   },
   item: {
     width: '100%',
     flexDirection: 'column',
   },
-  record: {
-    flexDirection: 'row',
-    marginLeft: 0,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   itemImg: {
     width: 48,
     height: 48,
     borderRadius: 24,
+    borderWidth: 1,
+    borderColor: 'red',
   },
   itemInfo: {
     flex: 1,
     paddingHorizontal: 15,
   },
   feedImg: {
-    //width: 100,
-    //height: 300,
     borderRadius: 10,
-    width: 400,
-    height: 500,
-    paddingRight: 50,
+    width: '100%',
+    height: 400,
   },
   itemTitle: {
     color: '#FFF',
@@ -298,7 +190,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
     marginBottom: 0,
   },
-
+  socialTitle: {
+    color: '#FFF',
+    fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
+    marginBottom: 0,
+    paddingVertical: 15,
+  },
   itemDesc: {
     color: '#FFF',
     fontSize: 11,

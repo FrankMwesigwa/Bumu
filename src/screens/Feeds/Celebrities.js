@@ -3,14 +3,14 @@ import React from 'react';
 import {TouchableOpacity, Image, FlatList, StyleSheet} from 'react-native';
 import {View} from 'native-base';
 
-import Featured from '../../constants/data/Stories';
+import Celeb from '../../constants/data/Stories';
 
 const Celebrities = () => {
   return (
-    <View style={Styles.gallery}>
-      <View style={Styles.galleryImg}>
+    <View style={Styles.section}>
+      <View style={Styles.celebImg}>
         <FlatList
-          data={Featured}
+          data={Celeb}
           horizontal
           style={Styles.slider}
           showsHorizontalScrollIndicator={false}
@@ -28,25 +28,18 @@ const Celebrities = () => {
 };
 
 const Styles = StyleSheet.create({
-  gallery: {
+  section: {
     paddingHorizontal: 20,
-    paddingTop: 10,
   },
-  galleryTitle: {
-    fontFamily: 'Montserrat-SemiBold',
-    color: '#333',
-  },
-  galleryImg: {
-    color: '#666',
-    lineHeight: 20,
+  celebImg: {
     minHeight: 100,
   },
   slider: {
     width: '100%',
   },
   sliderImg: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     marginRight: 10,
     borderRadius: 5,
   },

@@ -24,6 +24,11 @@ const Stories = [
     location: 'London',
     image: require('../../../assets/StoriesHeaderThumbnails/6.jpg'),
   },
+  {
+    name: 'Micheal',
+    location: 'London',
+    image: require('../../../assets/StoriesHeaderThumbnails/7.jpg'),
+  },
 ];
 
 export default Stories;
