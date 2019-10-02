@@ -10,15 +10,11 @@ import {
 } from 'react-navigation';
 
 import FeedScreen from '../screens/Feeds';
-//import Home_Activity from './screens/Home';
-import Settings_Activity from '../screens/Home/Settings';
-import Details_Activity from '../screens/Home/Details';
-import Profile_Activity from '../screens/Home/Profile';
+import MediaScreen from '../screens/Media';
 
 const HomeTab = createStackNavigator(
   {
     Feed: FeedScreen,
-    Details: Details_Activity,
   },
   {
     defaultNavigationOptions: {
@@ -27,39 +23,21 @@ const HomeTab = createStackNavigator(
   },
 );
 
-const SettingsTab = createStackNavigator(
+const MediaTab = createStackNavigator(
   {
-    Settings: Settings_Activity,
-    Details: Details_Activity,
-    Profile: Profile_Activity,
+    Media: MediaScreen,
   },
   {
     defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#0091EA',
-      },
-      headerTintColor: '#FFFFFF',
-      title: 'Settings Tab',
+      header: null,
     },
   },
 );
 
-// const BottomNavigator = createBottomTabNavigator(
-//   {
-//     Feed: {screen: FeedScreen},
-//   },
-//   {
-//     initialRouteName: 'Feed',
-//     activeColor: '#1B1F29',
-//     inactiveColor: '#1B1F29',
-//     barStyle: {backgroundColor: '#1B1F29'},
-//   },
-// );
-
 const MainApp = createBottomTabNavigator(
   {
     Feed: HomeTab,
-    //Settings: SettingsTab,
+    Media: MediaTab,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -69,14 +47,14 @@ const MainApp = createBottomTabNavigator(
           return (
             <Image
               source={require('../../assets/images/home.png')}
-              style={{width: 20, height: 20}}
+              style={{width: 30, height: 30}}
             />
           );
         } else {
           return (
             <Image
-              source={require('../../assets/images/chatlist.png')}
-              style={{width: 20, height: 20}}
+              source={require('../../assets/images/Media.png')}
+              style={{width: 30, height: 30}}
             />
           );
         }
