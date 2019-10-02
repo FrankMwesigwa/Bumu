@@ -4,22 +4,23 @@ import {
   View,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   Image,
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {Right, Content} from 'native-base';
+import {Content} from 'native-base';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
+import FeedElement from './FeedElement';
 
 const {width, height} = Dimensions.get('window');
 
 const FeedItem = () => {
   return (
     <Content>
-      <View style={styles.rowHeaderView}>
+      {/* <View style={styles.rowHeaderView}>
         <Image
           style={styles.profileImg}
           source={require('../../../assets/images/ic_background_ptwentyseven.png')}
@@ -34,80 +35,90 @@ const FeedItem = () => {
               styles.statusView,
               {backgroundColor: styles.statusBgColor},
             ]}>
-            <Entypo name="dots-three-vertical" size={30} color="#d4d4d4" />
+            <MaterialIcons name="more-vert" color="#FFFFFF" size={25} />
           </TouchableOpacity>
         </Right>
-      </View>
+      </View> */}
 
-      <View style={styles.rowHeaderView}>
-        <View style={styles.shares}>
-          <View>
-            <TouchableOpacity onPress={() => alert('Like')}>
-              <FontAwesome name="heart" size={40} color="#d4d4d4" />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text styles={styles.shareText}>1.2k</Text>
-          </View>
-          <View>
-            <TouchableOpacity onPress={() => alert('Share')}>
-              <MaterialIcons name="share" size={40} color="#d4d4d4" />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text styles={styles.shareText}>1.2k</Text>
-          </View>
-        </View>
-        <View style={styles.rowHeaderNameView}>
-          <Image
-            style={styles.postDescImage}
-            source={require('../../../assets/images/CultureReligion.jpg')}
-          />
-          <View style={styles.descriptionView}>
-            <View style={styles.postDateView}>
-              <View style={styles.suggestedPeopleImgView}>
-                <Image
-                  style={styles.sugestedPeopleImgOne}
-                  source={require('../../../assets/images/ProfileUserImg.png')}
-                />
-                <Image
-                  style={styles.sugestedPeopleImgTwo}
-                  source={require('../../../assets/images/ProfileImg.png')}
-                />
-                <Image
-                  style={styles.sugestedPeopleImgThree}
-                  source={require('../../../assets/images/reviews_two.png')}
-                />
-              </View>
-              <Text style={[styles.postAuthorDate, {color: '#adadad'}]}>
-                Liked By
-              </Text>
-              <Text
-                style={[
-                  styles.postAuthorDate,
-                  {color: '#FFF', marginLeft: width * 0.01},
-                ]}>
-                Ann, Joy, Emma and 33 others
-              </Text>
-              <Text
-                style={[
-                  styles.postAuthorDate,
-                  {
-                    color: '#6f6f6f',
-                    marginLeft: width * 0.025,
-                    marginTop: -width * 0.007,
-                  },
-                ]}>
-                .
+      <View style={styles.section}>
+        <TouchableHighlight underlayColor="transparent">
+          <View style={styles.record}>
+            <Image
+              source={require('../../../assets/images/ic_background_ptwentyseven.png')}
+              style={styles.itemImg}
+            />
+            <View style={styles.itemInfo}>
+              <Text style={styles.itemTitle}>Frank Mwesigwa</Text>
+              <Text style={styles.itemDesc}>
+                would love to connect with you
               </Text>
             </View>
-            <Text style={styles.rowDescTxt}>
-              Micheal Jordaon considered one of the greatest basketball players
-              in the all world. watch out for kevin dyrant
+            <Text style={styles.itemDate}>
+              <MaterialIcons name="more-vert" color="#FFFFFF" size={25} />
             </Text>
-            <Text style={styles.rowDescTxt}>View all 240 comments</Text>
           </View>
-        </View>
+        </TouchableHighlight>
+      </View>
+
+      <View style={styles.section}>
+        <TouchableHighlight underlayColor="transparent">
+          <View style={styles.record}>
+            <Image
+              source={require('../../../assets/images/ic_background_ptwentyseven.png')}
+              style={styles.itemImg}
+            />
+            <View style={styles.itemInfo}>
+              <Image
+                source={require('../../../assets/images/CultureReligion.jpg')}
+                style={styles.feedImg}
+              />
+              <View style={styles.itemDesc}>
+                <View style={styles.postDateView}>
+                  <View style={styles.suggestedPeopleImgView}>
+                    <Image
+                      style={styles.sugestedPeopleImgOne}
+                      source={require('../../../assets/images/ProfileUserImg.png')}
+                    />
+                    <Image
+                      style={styles.sugestedPeopleImgTwo}
+                      source={require('../../../assets/images/ProfileImg.png')}
+                    />
+                    <Image
+                      style={styles.sugestedPeopleImgThree}
+                      source={require('../../../assets/images/reviews_two.png')}
+                    />
+                  </View>
+                  <Text style={[styles.postAuthorDate, {color: '#adadad'}]}>
+                    Liked By
+                  </Text>
+                  <Text
+                    style={[
+                      styles.postAuthorDate,
+                      {color: '#FFF', marginLeft: width * 0.01},
+                    ]}>
+                    Ann, Joy, Emma and 33 others
+                  </Text>
+                  <Text
+                    style={[
+                      styles.postAuthorDate,
+                      {
+                        color: '#6f6f6f',
+                        marginLeft: width * 0.025,
+                        marginTop: -width * 0.007,
+                      },
+                    ]}>
+                    .
+                  </Text>
+                </View>
+              </View>
+              <Text style={styles.itemDesc}>
+                Micheal Jordaon considered one of the greatest basketball
+                players in the all world. watch out for kevin dyrant
+              </Text>
+              <Text style={styles.itemDesc}>View all 240 comments</Text>
+            </View>
+          </View>
+        </TouchableHighlight>
       </View>
 
       <View style={[styles.dividerHorizontal, {marginTop: height * 0.022}]} />
@@ -225,27 +236,80 @@ const styles = StyleSheet.create({
     marginRight: width * 0.03,
   },
   sugestedPeopleImgOne: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: width * 0.06,
     borderWidth: 2,
     borderColor: 'red',
   },
   sugestedPeopleImgTwo: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: width * 0.06,
     borderWidth: 2,
     borderColor: 'red',
     marginLeft: -width * 0.03,
   },
   sugestedPeopleImgThree: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: width * 0.06,
     borderWidth: 2,
     borderColor: 'red',
     marginLeft: -width * 0.03,
+  },
+  section: {
+    paddingLeft: 0,
+    width: '100%',
+    marginTop: 10,
+  },
+  item: {
+    width: '100%',
+    flexDirection: 'column',
+  },
+  record: {
+    flexDirection: 'row',
+    marginLeft: 0,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemImg: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+  },
+  itemInfo: {
+    flex: 1,
+    paddingHorizontal: 15,
+  },
+  feedImg: {
+    //width: 100,
+    //height: 300,
+    borderRadius: 10,
+    width: 400,
+    height: 500,
+    paddingRight: 50,
+  },
+  itemTitle: {
+    color: '#FFF',
+    fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
+    marginBottom: 0,
+  },
+
+  itemDesc: {
+    color: '#FFF',
+    fontSize: 11,
+    fontFamily: 'Montserrat-Regular',
+    marginBottom: 5,
+    lineHeight: 16,
+  },
+  itemDate: {
+    color: '#FFF',
+    fontSize: 10,
+    fontFamily: 'Montserrat-Regular',
   },
 });
 

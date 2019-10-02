@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   Text,
@@ -9,7 +10,7 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
-import {Header, Right, Left, Body} from 'native-base';
+import {Header, Right, Container} from 'native-base';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -18,32 +19,24 @@ import Stories from './Stories';
 import Celebrites from './Celebrities';
 import FeedItem from './FeedItem';
 import Bumers from './Bumers';
-
-let {height} = Dimensions.get('window');
-
-let box_count = 3;
-let box_height = height / box_count;
+import Story from './Story';
 
 class FeedsScreen extends Component {
   render() {
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('#FF2D55', true);
-      StatusBar.setTranslucent(true);
-    }
     return (
-      <View style={[styles.container]}>
-        <Header style={[styles.header]} transparent>
-          <Left style={styles.left}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.openDrawer()}>
-              <Entypo name="menu" color="#FFFFFF" size={30} />
-            </TouchableOpacity>
-          </Left>
-
-          <Body style={styles.body}>
-            <Text style={styles.headerTitle}>Bumu</Text>
-          </Body>
-
+      <Container style={styles.bgMain}>
+        <Header style={styles.navigation}>
+          <StatusBar
+            backgroundColor="#FF2D55"
+            animated
+            barStyle="light-content"
+          />
+          <View style={styles.actionBarMiddle}>
+            <Text style={styles.actionBarText}>
+              Talk to your Celebrity Bumu
+            </Text>
+          </View>
+          <View style={styles.actionBarRight} />
           <Right style={styles.right}>
             <TouchableOpacity>
               <MaterialIcons
@@ -60,50 +53,48 @@ class FeedsScreen extends Component {
           </Right>
         </Header>
 
-        <Header style={Style.navigation}>
-          <StatusBar
-            backgroundColor="#FF2D55"
-            animated
-            barStyle="light-content"
-          />
-
-          <View style={Style.actionBarLeft}>
-                    <Button transparent style={Style.actionMenu} onPress={() => {
-                        NavigationService.openDrawer()
-                    }}>
-                        <Image source={require('@Asset/images/menu.png')} />
-                    </Button>
-                </View>
-                <View style={Style.actionBarMiddle}>
-                    <Text style={Style.actionBarText}>Talk to your Celebrity Bumu</Text>
-                </View>
-                <View style={Style.actionBarRight}>
-                </View>
-            </Header>
-
         <View style={styles.subheader} />
         <View style={[styles.content]}>
-          <View style={styles.storiesheader}>
-            <Stories />
-          </View>
-          {/* <Celebrites /> */}
-          <ScrollView style={styles.feeditems}>
+          <Story />
+          <Celebrites />
+          <ScrollView>
             <FeedItem />
             <Bumers />
             <FeedItem />
           </ScrollView>
         </View>
-      </View>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  bgMain: {
+    backgroundColor: '#1B1F29',
   },
-  header: {
+  navigation: {
+    shadowOpacity: 0,
+    elevation: 0,
+    shadowOffset: {
+      height: 0,
+    },
+    shadowRadius: 0,
+    backgroundColor: 'transparent',
+    width: '100%',
+    borderBottomWidth: 0,
+    borderColor: '#FF2D55',
     backgroundColor: '#FF2D55',
+  },
+  actionBarMiddle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 6,
+  },
+  actionBarText: {
+    color: '#FFFFFF',
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 20,
+    textAlign: 'center',
   },
   subheader: {
     backgroundColor: '#FF2D55',
@@ -115,12 +106,6 @@ const styles = StyleSheet.create({
     marginTop: -70,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-  },
-  storiesheader: {
-    paddingTop: 3,
-  },
-  feeditems: {
-    marginHorizontal: 5,
   },
 });
 

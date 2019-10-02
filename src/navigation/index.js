@@ -59,7 +59,7 @@ const SettingsTab = createStackNavigator(
 const MainApp = createBottomTabNavigator(
   {
     Feed: HomeTab,
-    Settings: SettingsTab,
+    //Settings: SettingsTab,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
